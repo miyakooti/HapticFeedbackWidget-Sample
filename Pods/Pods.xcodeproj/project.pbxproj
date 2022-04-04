@@ -1,0 +1,571 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		244071E0A9E91E6B871DEA0520F0F890 /* Pods-widgetSampleExtension-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B454F5A12EEC9ED8678901B8E1E7F070 /* Pods-widgetSampleExtension-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F9DB078A00916C17614CB0EDD73ACAD /* Pods-HapticFeedbackSampleApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 764ED053F9A900AA45609210450FBAD6 /* Pods-HapticFeedbackSampleApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7BE677611A6824538AC8D5C994A6A3B8 /* Pods-HapticFeedbackSampleApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 42EA2ECB94774C0D33EA85CBB2A4C85E /* Pods-HapticFeedbackSampleApp-dummy.m */; };
+		CFB0023B849019627C5F961C323A6D2B /* Pods-widgetSampleExtension-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0135F3E3667786E48EF19D83740AD687 /* Pods-widgetSampleExtension-dummy.m */; };
+		E683D68C2A7F198E8DC986D93FAF718C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		F4BC8CACCD244EDBD92D42EEB9F60D12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		00FB2D4632CAC66BD585238CBA1EC292 /* Pods-HapticFeedbackSampleApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-HapticFeedbackSampleApp.modulemap"; sourceTree = "<group>"; };
+		0135F3E3667786E48EF19D83740AD687 /* Pods-widgetSampleExtension-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-widgetSampleExtension-dummy.m"; sourceTree = "<group>"; };
+		09B66DBD0BDE431509290F1B1113DB07 /* Pods-widgetSampleExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-widgetSampleExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		1E50832F0AD1C00DA7A42B7F586AF75D /* Pods-widgetSampleExtension-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-widgetSampleExtension-acknowledgements.plist"; sourceTree = "<group>"; };
+		342FDD331B81866E09C0A0C1756132EB /* Pods-widgetSampleExtension-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-widgetSampleExtension-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3DE98F7A8CBE8D45EBB466E472D767E4 /* Pods-widgetSampleExtension.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-widgetSampleExtension.modulemap"; sourceTree = "<group>"; };
+		42EA2ECB94774C0D33EA85CBB2A4C85E /* Pods-HapticFeedbackSampleApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HapticFeedbackSampleApp-dummy.m"; sourceTree = "<group>"; };
+		595093BA70B9E62D2995C10FC486E228 /* Pods-HapticFeedbackSampleApp */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-HapticFeedbackSampleApp"; path = Pods_HapticFeedbackSampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		764ED053F9A900AA45609210450FBAD6 /* Pods-HapticFeedbackSampleApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HapticFeedbackSampleApp-umbrella.h"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AA2BEA16BE17A517E149B13A3819801C /* Pods-widgetSampleExtension */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-widgetSampleExtension"; path = Pods_widgetSampleExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB11142C4D87D1D407500AB5E1155AB6 /* Pods-widgetSampleExtension-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-widgetSampleExtension-Info.plist"; sourceTree = "<group>"; };
+		AF001017717A2A881075E95B268CDB9E /* Pods-HapticFeedbackSampleApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HapticFeedbackSampleApp-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B454F5A12EEC9ED8678901B8E1E7F070 /* Pods-widgetSampleExtension-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-widgetSampleExtension-umbrella.h"; sourceTree = "<group>"; };
+		B8159EB9A73957279B3B5BDC08785E94 /* Pods-widgetSampleExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-widgetSampleExtension.release.xcconfig"; sourceTree = "<group>"; };
+		BE19DA0E681862406FA877172245E8E2 /* Pods-HapticFeedbackSampleApp-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HapticFeedbackSampleApp-Info.plist"; sourceTree = "<group>"; };
+		DC5EA95EF3999068D4A6DD12C6D3D0CE /* Pods-HapticFeedbackSampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HapticFeedbackSampleApp.debug.xcconfig"; sourceTree = "<group>"; };
+		DD9CD5D906B56C516FDEA3EF60469AF9 /* Pods-HapticFeedbackSampleApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HapticFeedbackSampleApp-acknowledgements.plist"; sourceTree = "<group>"; };
+		F43A6EE59836F4D7FD6DE3C70B77CA10 /* Pods-HapticFeedbackSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HapticFeedbackSampleApp.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1917D1ACF13CA0FBD705E7889068184D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E683D68C2A7F198E8DC986D93FAF718C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C16968EF0FA3590D7B29C270446218A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4BC8CACCD244EDBD92D42EEB9F60D12 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08956A0EE4316B4EAC4F16F7BFC4F4FE /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4A5808A4C34DCF850C06517DF2D99002 /* Pods-HapticFeedbackSampleApp */,
+				2B435A4054B00EC01D9C57217BD0AC2F /* Pods-widgetSampleExtension */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		2B435A4054B00EC01D9C57217BD0AC2F /* Pods-widgetSampleExtension */ = {
+			isa = PBXGroup;
+			children = (
+				3DE98F7A8CBE8D45EBB466E472D767E4 /* Pods-widgetSampleExtension.modulemap */,
+				342FDD331B81866E09C0A0C1756132EB /* Pods-widgetSampleExtension-acknowledgements.markdown */,
+				1E50832F0AD1C00DA7A42B7F586AF75D /* Pods-widgetSampleExtension-acknowledgements.plist */,
+				0135F3E3667786E48EF19D83740AD687 /* Pods-widgetSampleExtension-dummy.m */,
+				AB11142C4D87D1D407500AB5E1155AB6 /* Pods-widgetSampleExtension-Info.plist */,
+				B454F5A12EEC9ED8678901B8E1E7F070 /* Pods-widgetSampleExtension-umbrella.h */,
+				09B66DBD0BDE431509290F1B1113DB07 /* Pods-widgetSampleExtension.debug.xcconfig */,
+				B8159EB9A73957279B3B5BDC08785E94 /* Pods-widgetSampleExtension.release.xcconfig */,
+			);
+			name = "Pods-widgetSampleExtension";
+			path = "Target Support Files/Pods-widgetSampleExtension";
+			sourceTree = "<group>";
+		};
+		44008E397A601D0554B7F0B629421288 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				595093BA70B9E62D2995C10FC486E228 /* Pods-HapticFeedbackSampleApp */,
+				AA2BEA16BE17A517E149B13A3819801C /* Pods-widgetSampleExtension */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4A5808A4C34DCF850C06517DF2D99002 /* Pods-HapticFeedbackSampleApp */ = {
+			isa = PBXGroup;
+			children = (
+				00FB2D4632CAC66BD585238CBA1EC292 /* Pods-HapticFeedbackSampleApp.modulemap */,
+				AF001017717A2A881075E95B268CDB9E /* Pods-HapticFeedbackSampleApp-acknowledgements.markdown */,
+				DD9CD5D906B56C516FDEA3EF60469AF9 /* Pods-HapticFeedbackSampleApp-acknowledgements.plist */,
+				42EA2ECB94774C0D33EA85CBB2A4C85E /* Pods-HapticFeedbackSampleApp-dummy.m */,
+				BE19DA0E681862406FA877172245E8E2 /* Pods-HapticFeedbackSampleApp-Info.plist */,
+				764ED053F9A900AA45609210450FBAD6 /* Pods-HapticFeedbackSampleApp-umbrella.h */,
+				DC5EA95EF3999068D4A6DD12C6D3D0CE /* Pods-HapticFeedbackSampleApp.debug.xcconfig */,
+				F43A6EE59836F4D7FD6DE3C70B77CA10 /* Pods-HapticFeedbackSampleApp.release.xcconfig */,
+			);
+			name = "Pods-HapticFeedbackSampleApp";
+			path = "Target Support Files/Pods-HapticFeedbackSampleApp";
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				44008E397A601D0554B7F0B629421288 /* Products */,
+				08956A0EE4316B4EAC4F16F7BFC4F4FE /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		12D31042BB92D0D57F8155C39C2F613C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				244071E0A9E91E6B871DEA0520F0F890 /* Pods-widgetSampleExtension-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E9FBCDC8E691D1C6807DEA1096ED83B1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F9DB078A00916C17614CB0EDD73ACAD /* Pods-HapticFeedbackSampleApp-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		6A93552B71EFCEB2CA45FE4BC46C0F94 /* Pods-widgetSampleExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 334464920817EE29C3B2396865841517 /* Build configuration list for PBXNativeTarget "Pods-widgetSampleExtension" */;
+			buildPhases = (
+				12D31042BB92D0D57F8155C39C2F613C /* Headers */,
+				4D38A122B133817FDB296FB00C4EF747 /* Sources */,
+				1917D1ACF13CA0FBD705E7889068184D /* Frameworks */,
+				856D568FA18A014A8002D6D8F9A6CD64 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-widgetSampleExtension";
+			productName = Pods_widgetSampleExtension;
+			productReference = AA2BEA16BE17A517E149B13A3819801C /* Pods-widgetSampleExtension */;
+			productType = "com.apple.product-type.framework";
+		};
+		79344FF630222E25FCD77EF55EE3E95E /* Pods-HapticFeedbackSampleApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31A9C3B9CB059FB9387DBC8E4A6918BD /* Build configuration list for PBXNativeTarget "Pods-HapticFeedbackSampleApp" */;
+			buildPhases = (
+				E9FBCDC8E691D1C6807DEA1096ED83B1 /* Headers */,
+				CA2A15E3E3F1C94A8275E4BA6756B368 /* Sources */,
+				C16968EF0FA3590D7B29C270446218A8 /* Frameworks */,
+				BD4FAC18B9E35604C37299DF0FD9B1D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-HapticFeedbackSampleApp";
+			productName = Pods_HapticFeedbackSampleApp;
+			productReference = 595093BA70B9E62D2995C10FC486E228 /* Pods-HapticFeedbackSampleApp */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 44008E397A601D0554B7F0B629421288 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				79344FF630222E25FCD77EF55EE3E95E /* Pods-HapticFeedbackSampleApp */,
+				6A93552B71EFCEB2CA45FE4BC46C0F94 /* Pods-widgetSampleExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		856D568FA18A014A8002D6D8F9A6CD64 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD4FAC18B9E35604C37299DF0FD9B1D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4D38A122B133817FDB296FB00C4EF747 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFB0023B849019627C5F961C323A6D2B /* Pods-widgetSampleExtension-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA2A15E3E3F1C94A8275E4BA6756B368 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BE677611A6824538AC8D5C994A6A3B8 /* Pods-HapticFeedbackSampleApp-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		36F2D61074374EAC81D24E674EF610E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC5EA95EF3999068D4A6DD12C6D3D0CE /* Pods-HapticFeedbackSampleApp.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HapticFeedbackSampleApp/Pods-HapticFeedbackSampleApp-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HapticFeedbackSampleApp/Pods-HapticFeedbackSampleApp.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4BC7450F9457737EE3E637BA155B56F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		8B5A46FF8D3C1289CDEE3BAFACABCD2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		C233CABD66BE5B85F10C10D6F66460CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F43A6EE59836F4D7FD6DE3C70B77CA10 /* Pods-HapticFeedbackSampleApp.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HapticFeedbackSampleApp/Pods-HapticFeedbackSampleApp-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HapticFeedbackSampleApp/Pods-HapticFeedbackSampleApp.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E68BB5810FFD2AD143F94CC381EC9BA5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09B66DBD0BDE431509290F1B1113DB07 /* Pods-widgetSampleExtension.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-widgetSampleExtension/Pods-widgetSampleExtension-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-widgetSampleExtension/Pods-widgetSampleExtension.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F6D2ED0E746907E1B96A391B8C177F98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8159EB9A73957279B3B5BDC08785E94 /* Pods-widgetSampleExtension.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-widgetSampleExtension/Pods-widgetSampleExtension-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-widgetSampleExtension/Pods-widgetSampleExtension.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		31A9C3B9CB059FB9387DBC8E4A6918BD /* Build configuration list for PBXNativeTarget "Pods-HapticFeedbackSampleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36F2D61074374EAC81D24E674EF610E9 /* Debug */,
+				C233CABD66BE5B85F10C10D6F66460CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		334464920817EE29C3B2396865841517 /* Build configuration list for PBXNativeTarget "Pods-widgetSampleExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E68BB5810FFD2AD143F94CC381EC9BA5 /* Debug */,
+				F6D2ED0E746907E1B96A391B8C177F98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4BC7450F9457737EE3E637BA155B56F7 /* Debug */,
+				8B5A46FF8D3C1289CDEE3BAFACABCD2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
