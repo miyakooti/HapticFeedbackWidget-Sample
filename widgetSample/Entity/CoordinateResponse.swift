@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct CoordinateData: Codable {
+struct CoordinateResponse: Codable {
     let status: String?
     let code: Int?
-    let data: [Datum]?
+    let data: [CoordinateData]?
     
     init() {
         status = nil
@@ -19,7 +19,7 @@ struct CoordinateData: Codable {
     }
 }
 
-struct Datum: Codable {
+struct CoordinateData: Codable {
     let uuid: String?
     let topImage: TopImage?
 //    let user: User?
@@ -32,3 +32,4 @@ struct TopImage: Codable {
 struct User: Codable {
     let url: String
 }
+

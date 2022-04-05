@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 final class Loader {
-    static func fetch(completion: @escaping (CoordinateData?) -> Void) {
+    static func fetch(completion: @escaping (CoordinateResponse?) -> Void) {
         AF.request("https://room.rakuten.co.jp/api/coordinate")
             .responseJSON { response in
                 if response.error != nil {
@@ -19,7 +19,7 @@ final class Loader {
                 let decoder = JSONDecoder()
                 do {
                     guard let data = response.data else { return }
-                    let coord: CoordinateData = try decoder.decode(CoordinateData.self, from: data)
+                    let coord: CoordinateResponse = try decoder.decode(CoordinateResponse.self, from: data)
                     completion(coord)
                 } catch {
                     print(error.localizedDescription)
