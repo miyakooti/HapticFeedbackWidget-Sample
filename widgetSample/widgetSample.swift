@@ -25,6 +25,9 @@ struct Provider: IntentTimelineProvider {
     }
 
     // timeline　タイムエントリーにタイムポリシーを添付する。タイムポリシーは３種類ある
+    // ここでAPI呼べる　https://medium.com/kinandcartacreated/widgetkit-advanced-development-part-1-dbb0e49e849c
+//    isnt a return type
+    
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
 
@@ -53,13 +56,15 @@ struct widgetSampleEntryView : View {
     var entry: Provider.Entry
     
     var body: some View {
-        VStack(spacing: 10) {
+        VStack(alignment: .center, spacing: 10.0) {
             Text(entry.date, style: .time)
             Text(entry.name)
             Image(systemName: "figure.walk")
                 .font(.system(.largeTitle).bold())
+                .widgetURL(URL(string: "https://room.rakuten.co.jp/room_553edc611c/coordinate/77258da7-a5bd-4562-aa0f-26c2c21471de"))
             
-        }.widgetURL(URL(string: "ここにURLを入力することができます"))
+            
+        }
         
     }
 }
@@ -95,3 +100,7 @@ struct widgetSample_Previews: PreviewProvider {
         }
     }
 }
+//
+//class Loader {
+//    
+//}
