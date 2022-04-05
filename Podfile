@@ -14,5 +14,6 @@ target 'widgetSampleExtension' do
   use_frameworks!
 
   # Pods for widgetSampleExtension
+  pod 'Alamofire'
 
 end

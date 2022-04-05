@@ -71,9 +71,7 @@
 		C0DE1E1227EB024F004E5654 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0DE1E1427EB024F004E5654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0DFAF6927FAC07B006DDE99 /* HapticFeedbackSampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HapticFeedbackSampleApp.entitlements; sourceTree = "<group>"; };
-		C0DFAF6A27FAC714006DDE99 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C0DFAF6D27FAC7E5006DDE99 /* widgetSampleExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = widgetSampleExtension.entitlements; sourceTree = "<group>"; };
-		C0F1735827FBC2950062652A /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		CA0F43A3AE6BAA945C418366 /* Pods-HapticFeedbackSampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HapticFeedbackSampleApp.debug.xcconfig"; path = "Target Support Files/Pods-HapticFeedbackSampleApp/Pods-HapticFeedbackSampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D03A5A24526EFFF0F503AE66 /* Pods_HapticFeedbackSampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HapticFeedbackSampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -174,8 +172,6 @@
 		C0DFAF6C27FAC772006DDE99 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				C0DFAF6A27FAC714006DDE99 /* User.swift */,
-				C0F1735827FBC2950062652A /* Coordinate.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";

@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_widgetSampleExtensionVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_widgetSampleExtensionVersionString[];
+FOUNDATION_EXPORT double AlamofireVersionNumber;
+FOUNDATION_EXPORT const unsigned char AlamofireVersionString[];
 
