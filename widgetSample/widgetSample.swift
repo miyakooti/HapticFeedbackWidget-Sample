@@ -79,12 +79,20 @@ struct widgetSampleEntryView : View {
         VStack(alignment: .center, spacing: 10.0) {
             Text(entry.date, style: .time)
             if let uuid = entry.coordinateData.data?.first?.uuid {
-                Text(uuid)
+//                Text(uuid)
             }
-            Image(systemName: "figure.walk")
-            
-                .font(.system(.largeTitle).bold())
-                .widgetURL(URL(string: "https://room.rakuten.co.jp/room_553edc611c/coordinate/77258da7-a5bd-4562-aa0f-26c2c21471de"))
+//            if let imageUrl = URL(string: "https://room.r10s.jp/d/strg/ctrl/22/7616f0b654c6fa3c6d8491ae88944b876801f602.79.9.22.3.jpg") {
+
+            if let imageUrl =  "https://room.r10s.jp/d/strg/ctrl/22/7616f0b654c6fa3c6d8491ae88944b876801f602.79.9.22.3.jpg" {
+                
+                NetworkImage(withURL: imageUrl, size: CGSize(width: 100, height: 100))
+
+//                AsyncImage(url: imageUrl)
+//                    .frame(width: 200, height: 200, alignment: .center)
+            }
+//            Image(systemName: "figure.walk")
+//                .font(.system(.largeTitle).bold())
+//                .widgetURL(URL(string: "https://room.rakuten.co.jp/room_553edc611c/coordinate/77258da7-a5bd-4562-aa0f-26c2c21471de"))
         }
         
     }
@@ -144,6 +152,39 @@ final class Loader {
     
 }
 
+struct NetworkImage: View {
+
+    private let url: URL?
+    private var size = CGSize(width: 50, height: 50)
+
+    init(withURL url:String) {
+        self.url = URL(string: url)
+    }
+    
+    init(withURL url:String, size:CGSize) {
+        self.url = URL(string: url)
+        self.size = size
+    }
+
+    var body: some View {
+        Group {
+            if let url = url, let imageData = try? Data(contentsOf: url),
+                let uiImage = UIImage(data: imageData) {
+                Image(uiImage: uiImage).resizable().scaledToFill().frame(width: size.width, height: size.height, alignment: .center).clipShape(ContainerRelativeShape())
+            } else {
+                Image("noimage").resizable().scaledToFill().frame(width: size.width, height: size.height, alignment: .center).clipShape(ContainerRelativeShape())
+            }
+        }
+    }
+}
+
+//画像のリンク
+// ユーザーへのリンク
+//投稿ID uuid
+
+// が必要です
+
+
 struct Coordinate: Codable {
     let status: String?
     let code: Int?
@@ -161,7 +202,12 @@ struct Coordinate: Codable {
 ///
 struct Datum: Codable {
     let uuid: String?
+    let topImage: TopImage?
 //    let user: User?
+}
+
+struct TopImage: Codable {
+    let url: String
 }
 
 struct User: Codable {
