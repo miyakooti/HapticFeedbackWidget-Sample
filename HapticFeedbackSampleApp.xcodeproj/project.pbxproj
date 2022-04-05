@@ -22,8 +22,6 @@
 		C0DE1E1527EB024F004E5654 /* widgetSample.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C0DE1E1127EB024E004E5654 /* widgetSample.intentdefinition */; };
 		C0DE1E1627EB024F004E5654 /* widgetSample.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C0DE1E1127EB024E004E5654 /* widgetSample.intentdefinition */; };
 		C0DE1E1927EB024F004E5654 /* widgetSampleExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C0DE1E0827EB024E004E5654 /* widgetSampleExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		C0DFAF6B27FAC714006DDE99 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFAF6A27FAC714006DDE99 /* User.swift */; };
-		C0F1735927FBC2950062652A /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F1735827FBC2950062652A /* Coordinate.swift */; };
 		C12D6A90A3FF26F824EAC1CD /* Pods_HapticFeedbackSampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03A5A24526EFFF0F503AE66 /* Pods_HapticFeedbackSampleApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -194,6 +192,7 @@
 				C00C6B5427D59F1B005590A0 /* Frameworks */,
 				C00C6B5527D59F1B005590A0 /* Resources */,
 				C0DE1E1A27EB024F004E5654 /* Embed App Extensions */,
+				B3FABF737C77114709144C62 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -304,6 +303,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B3FABF737C77114709144C62 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HapticFeedbackSampleApp/Pods-HapticFeedbackSampleApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HapticFeedbackSampleApp/Pods-HapticFeedbackSampleApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HapticFeedbackSampleApp/Pods-HapticFeedbackSampleApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D33980496B0BD401198E0B2C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -333,10 +349,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0F1735927FBC2950062652A /* Coordinate.swift in Sources */,
 				C0DE1E1627EB024F004E5654 /* widgetSample.intentdefinition in Sources */,
 				C0DD61B527E1897D00FD1404 /* Taptic.swift in Sources */,
-				C0DFAF6B27FAC714006DDE99 /* User.swift in Sources */,
 				C00C6B5F27D59F1B005590A0 /* TopViewController.swift in Sources */,
 				C00C6B5B27D59F1B005590A0 /* AppDelegate.swift in Sources */,
 				C00C6B5D27D59F1B005590A0 /* SceneDelegate.swift in Sources */,
