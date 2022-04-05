@@ -13,12 +13,12 @@ import Alamofire
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        return SimpleEntry(date: Date(), configuration: ConfigurationIntent(), name: "kousuke")
+        return SimpleEntry(date: Date(), configuration: ConfigurationIntent(), coordinateData: Coordinate())
     }
     
     // snapshot　タイムエントリーを返す
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration, name: "kousuke")
+        let entry = SimpleEntry(date: Date(), configuration: configuration, coordinateData: Coordinate())
         completion(entry)
     }
     
@@ -28,39 +28,47 @@ struct Provider: IntentTimelineProvider {
     
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         
-        
-        
-        
-        
-        var entries: [SimpleEntry] = []
-        
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration, name: "kousuke")
-            entries.append(entry)
-        }
-        
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        
-        
-        
-        
-        
-        
         Loader.fetch { coordinate in
-            print("データのロードが終わりました")
-            print(coordinate)
-            completion(timeline)
+            if let coordinate = coordinate {
+                var entries: [SimpleEntry] = []
+                
+                // Generate a timeline consisting of five entries an hour apart, starting from the current date.
+                let currentDate = Date()
+                for hourOffset in 0 ..< 5 {
+                    let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
+                    let entry = SimpleEntry(date: entryDate, configuration: configuration, coordinateData: coordinate)
+                    entries.append(entry)
+                }
+                
+                let timeline = Timeline(entries: entries, policy: .atEnd)
+                completion(timeline)
+
+                
+            } else {
+                var entries: [SimpleEntry] = []
+                
+                let currentDate = Date()
+                for hourOffset in 0 ..< 5 {
+                    let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
+                    let entry = SimpleEntry(date: entryDate, configuration: configuration, coordinateData: Coordinate())
+                    entries.append(entry)
+                }
+                
+                let timeline = Timeline(entries: entries, policy: .atEnd)
+                completion(timeline)
+                
+            }
         }
+        
+        
+
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let configuration: ConfigurationIntent
-    let name: String
+    let coordinateData: Coordinate
 }
 
 //ビューはこっちで構成する多分。受け取ったデータをどのUIに適用するか
@@ -70,8 +78,11 @@ struct widgetSampleEntryView : View {
     var body: some View {
         VStack(alignment: .center, spacing: 10.0) {
             Text(entry.date, style: .time)
-            Text(entry.name)
+            if let uuid = entry.coordinateData.data?.first?.uuid {
+                Text(uuid)
+            }
             Image(systemName: "figure.walk")
+            
                 .font(.system(.largeTitle).bold())
                 .widgetURL(URL(string: "https://room.rakuten.co.jp/room_553edc611c/coordinate/77258da7-a5bd-4562-aa0f-26c2c21471de"))
         }
@@ -99,13 +110,13 @@ struct widgetSample: Widget {
 struct widgetSample_Previews: PreviewProvider {
     static var previews: some View { // なんか選択する時のやつ？ 最初は一個だったけどなんかSMLのサイズを用意するために必要らしい
         Group {
-            widgetSampleEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), name: String()))
+            widgetSampleEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), coordinateData: Coordinate()))
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
             
-            widgetSampleEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), name: String()))
+            widgetSampleEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), coordinateData: Coordinate()))
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
-            widgetSampleEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), name: String()))
+            widgetSampleEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), coordinateData: Coordinate()))
                 .previewContext(WidgetPreviewContext(family: .systemExtraLarge))
         }
     }
@@ -116,20 +127,15 @@ final class Loader {
         AF.request("https://room.rakuten.co.jp/api/coordinate")
             .responseJSON { response in
                 if response.error != nil {
-                    print("alamofire error")
                     print(response.error?.localizedDescription)
                     completion(nil)
                 }
                 let decoder = JSONDecoder()
                 do {
-                    print("do")
                     guard let data = response.data else { return }
                     let coord: Coordinate = try decoder.decode(Coordinate.self, from: data)
-                    print("デコードできました", coord.status)
-                    print(coord.data)
                     completion(coord)
                 } catch {
-                    print("parse ERROR ↓")
                     print(error.localizedDescription)
                     completion(nil)
                 }
@@ -142,6 +148,12 @@ struct Coordinate: Codable {
     let status: String?
     let code: Int?
     let data: [Datum]?
+    
+    init() {
+        status = nil
+        code = nil
+        data = nil
+    }
 }
 //
 //// MARK: - Datum
