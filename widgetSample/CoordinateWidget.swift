@@ -13,12 +13,12 @@ import Alamofire
 struct Provider: IntentTimelineProvider {
 //    このWidgetが何を表示するものなのかを表すことがポイント
     func placeholder(in context: Context) -> SimpleEntry {
-        return SimpleEntry(date: Date(), configuration: ConfigurationIntent(), coordinateResponse: CoordinateResponse())
+        return SimpleEntry(date: Date(), configuration: ConfigurationIntent(), imagesURLString: [String](), deepLinks: [String]())
     }
     
     // snapshot　タイムエントリーを返す
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration, coordinateResponse: CoordinateResponse())
+        let entry = SimpleEntry(date: Date(), configuration: configuration, imagesURLString: [String](), deepLinks: [String]())
         completion(entry)
     }
     
@@ -31,17 +31,38 @@ struct Provider: IntentTimelineProvider {
             var entries: [SimpleEntry] = []
             let currentDate = Date()
             
-            if let coordinate = coordinate {
+            print(coordinate)
+            
+            if let coordinate = coordinate?.data {
+                
+                print("entityを生成できるかな？")
+                var urlsString: [String] = []
+                var deepLinks: [String] = []
+                
+                for value in coordinate {
+                    print("あああ")
+                    print(value.topImage.url)
+                    print(value.user.url)
+//                    guard let imageURL = value.topImage.url else { return }
+                    let deepLink = value.user.url + "/coordinate/" + value.uuid
+                    urlsString.append(value.topImage.url)
+                    deepLinks.append(deepLink)
+                }
+                print("ループ終わり")
+                print(urlsString)
+                print(deepLinks)
+                
                 for hourOffset in 0 ..< 5 {
                     let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-                    let entry = SimpleEntry(date: entryDate, configuration: configuration, coordinateResponse: coordinate)
+                    let entry = SimpleEntry(date: entryDate, configuration: configuration, imagesURLString: urlsString, deepLinks: deepLinks)
                     entries.append(entry)
                 }
+                
                 
             } else {
                 for hourOffset in 0 ..< 5 {
                     let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-                    let entry = SimpleEntry(date: entryDate, configuration: configuration, coordinateResponse: CoordinateResponse())
+                    let entry = SimpleEntry(date: entryDate, configuration: configuration, imagesURLString: [String](), deepLinks: [String]())
                     entries.append(entry)
                 }
                                 
@@ -58,7 +79,8 @@ struct Provider: IntentTimelineProvider {
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let configuration: ConfigurationIntent
-    let coordinateResponse: CoordinateResponse
+    let imagesURLString: [String]
+    let deepLinks: [String]
 }
 
 //ビューはこっちで構成する多分。受け取ったデータをどのUIに適用するか
@@ -68,13 +90,10 @@ struct coordinateEntryView : View {
     var body: some View {
         VStack(alignment: .center, spacing: 10.0) {
             Text(entry.date, style: .time)
-//                .widgetURL(URL(string: "https://blog.personal-factory.com/2020/11/30/how-to-create-deep-link-for-widget/"))
-            if let imageUrl =  "https://room.r10s.jp/d/strg/ctrl/22/7616f0b654c6fa3c6d8491ae88944b876801f602.79.9.22.3.jpg" {
+            if let imageUrl =  entry.imagesURLString.first {
                 NetworkImage(withURL: imageUrl, size: CGSize(width: 100, height: 100))
             }
-            Link(destination: URL(string: "https://blog.personal-factory.com/2020/11/30/how-to-create-deep-link-for-widget/")!) {
-                Text("コーディネート")
-            }
+            Text("コーディネート")
         }.widgetURL(URL(string: "https://room.rakuten.co.jp/room_553edc611c/coordinate/77258da7-a5bd-4562-aa0f-26c2c21471de"))
 
     }
@@ -111,7 +130,7 @@ struct widgetSample_Previews: PreviewProvider {
     
     // プレビューの選択肢を定義している　嘘かも知れない これ右側のやつでしょ？開発者しか見なくない？
     static var previews: some View {
-        coordinateEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), coordinateResponse: CoordinateResponse()))
+        coordinateEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), imagesURLString: [String](), deepLinks: [String]()))
             .preferredColorScheme(.light)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
 //        Group {
