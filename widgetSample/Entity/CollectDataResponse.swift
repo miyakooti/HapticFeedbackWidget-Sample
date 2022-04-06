@@ -11,7 +11,7 @@ struct CollectDataResponse: Codable {
     let status: String?
     let code: Int?
     let data: [CollectData]?
-    
+
     init() {
         status = nil
         code = nil
@@ -20,5 +20,6 @@ struct CollectDataResponse: Codable {
 }
 
 struct CollectData: Codable {
-    let
+    let username: String?
+    let id: String?
 }
