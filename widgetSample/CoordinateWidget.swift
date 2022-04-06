@@ -30,27 +30,17 @@ struct Provider: IntentTimelineProvider {
         Loader.fetchCoordinate { coordinate in
             var entries: [SimpleEntry] = []
             let currentDate = Date()
-            
-            print(coordinate)
-            
+                        
             if let coordinate = coordinate?.data {
                 
-                print("entityを生成できるかな？")
                 var urlsString: [String] = []
                 var deepLinks: [String] = []
                 
                 for value in coordinate {
-                    print("あああ")
-                    print(value.topImage.url)
-                    print(value.user.url)
-//                    guard let imageURL = value.topImage.url else { return }
                     let deepLink = value.user.url + "/coordinate/" + value.uuid
                     urlsString.append(value.topImage.url)
                     deepLinks.append(deepLink)
                 }
-                print("ループ終わり")
-                print(urlsString)
-                print(deepLinks)
                 
                 for hourOffset in 0 ..< 5 {
                     let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
