@@ -20,6 +20,10 @@ struct CollectDataResponse: Codable {
 }
 
 struct CollectData: Codable {
-    let username: String?
+    let user: CollectUser
     let id: String?
+}
+
+struct CollectUser: Codable {
+    let username: String?
 }
