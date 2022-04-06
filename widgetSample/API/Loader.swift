@@ -17,6 +17,7 @@ final class Loader {
                     completion(nil)
                 }
                 let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
                 do {
                     guard let data = response.data else { return }
                     let coord: CoordinateResponse = try decoder.decode(CoordinateResponse.self, from: data)
@@ -36,6 +37,7 @@ final class Loader {
                     completion(nil)
                 }
                 let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
                 do {
                     guard let data = response.data else { return }
                     let collect: CollectDataResponse = try decoder.decode(CollectDataResponse.self, from: data)

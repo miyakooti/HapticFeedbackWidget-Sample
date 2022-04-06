@@ -25,12 +25,6 @@ struct CoordinateData: Codable {
     let uuid: String
     let topImage: TopImage
     let user: User
-    
-    enum CodingKeys: String, CodingKey {
-        case uuid
-        case topImage = "top_image"
-        case user
-    }
 }
 
 struct TopImage: Codable {
