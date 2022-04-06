@@ -54,6 +54,7 @@ struct Provider: IntentTimelineProvider {
     }
 }
 
+// 両方に共通して必要なのは、画像のURLのリスト、ディープリンク用のURLのみかな
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let configuration: ConfigurationIntent
@@ -61,7 +62,7 @@ struct SimpleEntry: TimelineEntry {
 }
 
 //ビューはこっちで構成する多分。受け取ったデータをどのUIに適用するか
-struct widgetSampleEntryView : View {
+struct coordinateEntryView : View {
     var entry: Provider.Entry
     
     var body: some View {
@@ -72,7 +73,7 @@ struct widgetSampleEntryView : View {
                 NetworkImage(withURL: imageUrl, size: CGSize(width: 100, height: 100))
             }
             Link(destination: URL(string: "https://blog.personal-factory.com/2020/11/30/how-to-create-deep-link-for-widget/")!) {
-                Text("dafadfafa")
+                Text("コーディネート")
             }
         }.widgetURL(URL(string: "https://room.rakuten.co.jp/room_553edc611c/coordinate/77258da7-a5bd-4562-aa0f-26c2c21471de"))
 
@@ -86,10 +87,9 @@ struct widgetSampleEntryView : View {
 struct CoordinateWidget: Widget {
     
     let kind: String = "coordinateWidget"
-    
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            widgetSampleEntryView(entry: entry) // これが実際に表示されるビュー
+            coordinateEntryView(entry: entry) // これが実際に表示されるビュー
         }
         .configurationDisplayName("コーディネート") //ウィジェットの名前
         .description("コーディネートの最新投稿が表示されます") //ウィジェットの説明
@@ -97,19 +97,21 @@ struct CoordinateWidget: Widget {
     }
 }
 
+
 @main
 struct ExampleWidgets: WidgetBundle {
     @WidgetBundleBuilder
     var body: some Widget {
         CoordinateWidget()
+//        CollectWidget()
     }
 }
 
 struct widgetSample_Previews: PreviewProvider {
     
-    // プレビューの選択肢を定義している　嘘かも知れない
+    // プレビューの選択肢を定義している　嘘かも知れない これ右側のやつでしょ？開発者しか見なくない？
     static var previews: some View {
-        widgetSampleEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), coordinateResponse: CoordinateResponse()))
+        coordinateEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), coordinateResponse: CoordinateResponse()))
             .preferredColorScheme(.light)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
 //        Group {
