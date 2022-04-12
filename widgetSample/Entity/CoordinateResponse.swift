@@ -25,6 +25,8 @@ struct CoordinateData: Codable {
     let uuid: String
     let topImage: TopImage
     let user: User
+    let content: String
+    let cntLike: Int
 }
 
 struct TopImage: Codable {
@@ -33,5 +35,14 @@ struct TopImage: Codable {
 
 struct User: Codable {
     let url: String
+    let profile: Profile
+    let fullname: String
 }
 
+struct Profile: Codable {
+    let imageAvatar: ImageAvatar
+}
+
+struct ImageAvatar: Codable {
+    let url: String
+}

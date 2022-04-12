@@ -13,11 +13,11 @@ import Alamofire
 struct Provider: TimelineProvider {
     
     func placeholder(in context: Context) -> SimpleEntry {
-        return SimpleEntry(date: Date(), imagesURLString: [String](), deepLinks: [String]())
+        return SimpleEntry(date: Date(), imagesURLString: [], deepLinks: [String](), content: [String](), avatarImage: [String](), cntLike: [Int](), fullName: [String]())
     }
     
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), imagesURLString: [String](), deepLinks: [String]())
+        let entry = SimpleEntry(date: Date(), imagesURLString: [], deepLinks: [String](), content: [String](), avatarImage: [String](), cntLike: [Int](), fullName: [String]())
         completion(entry)
     }
     
@@ -30,21 +30,30 @@ struct Provider: TimelineProvider {
                 
                 var urlsString: [String] = []
                 var deepLinks: [String] = []
+                var content: [String] = []
+                var avatarImage: [String] = []
+                var cntLike: [Int] = []
+                var fullname: [String] = []
                 for value in coordinate {
                     let deepLink = value.user.url + "/coordinate/" + value.uuid
                     urlsString.append(value.topImage.url)
                     deepLinks.append(deepLink)
+                    content.append(value.content)
+                    avatarImage.append(value.user.profile.imageAvatar.url)
+                    fullname.append(value.user.fullname)
+                    cntLike.append(value.cntLike)
                 }
+
                 for hourOffset in 0 ..< 5 {
                     let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-                    let entry = SimpleEntry(date: entryDate, imagesURLString: urlsString, deepLinks: deepLinks)
+                    let entry = SimpleEntry(date: entryDate, imagesURLString: urlsString, deepLinks: deepLinks, content: content, avatarImage: avatarImage, cntLike: cntLike, fullName: fullname)
                     entries.append(entry)
                 }
                 
             } else {
                 for hourOffset in 0 ..< 5 {
                     let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-                    let entry = SimpleEntry(date: entryDate, imagesURLString: [String](), deepLinks: [String]())
+                    let entry = SimpleEntry(date: Date(), imagesURLString: [], deepLinks: [String](), content: [String](), avatarImage: [String](), cntLike: [Int](), fullName: [String]())
                     entries.append(entry)
                 }
             }
@@ -59,6 +68,10 @@ struct SimpleEntry: TimelineEntry {
     let date: Date
     let imagesURLString: [String]
     let deepLinks: [String]
+    let content: [String]
+    let avatarImage: [String]
+    let cntLike: [Int]
+    let fullName: [String]
 }
 
 struct coordinateEntryView: View {
@@ -237,14 +250,14 @@ struct widgetSample_Previews: PreviewProvider {
 //            .preferredColorScheme(.light)
 //            .previewContext(WidgetPreviewContext(family: .systemSmall))
         Group {
-            coordinateEntryView(entry: SimpleEntry(date: Date(), imagesURLString: [], deepLinks: [String]()))
+            coordinateEntryView(entry: SimpleEntry(date: Date(), imagesURLString: [], deepLinks: [String](), content: [String](), avatarImage: [String](), cntLike: [Int](), fullName: [String]()))
                 .padding()
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
 
-            coordinateEntryView(entry: SimpleEntry(date: Date(), imagesURLString: [String](), deepLinks: [String]()))
+            coordinateEntryView(entry: SimpleEntry(date: Date(), imagesURLString: [], deepLinks: [String](), content: [String](), avatarImage: [String](), cntLike: [Int](), fullName: [String]()))
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
 
-            coordinateEntryView(entry: SimpleEntry(date: Date(), imagesURLString: [String](), deepLinks: [String]()))
+            coordinateEntryView(entry: SimpleEntry(date: Date(), imagesURLString: [], deepLinks: [String](), content: [String](), avatarImage: [String](), cntLike: [Int](), fullName: [String]()))
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
         }
     }
