@@ -71,100 +71,115 @@ struct coordinateEntryView: View {
             
         case .systemSmall:
             VStack(alignment: .center, spacing: 5.0) {
-//                if let imageUrl = entry.imagesURLString.first {
-//                    NetworkImage(withURL: imageUrl, size: CGSize(width: 150, height: 120))
-//                        .cornerRadius(15)
-//                }
-                Image("test")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 170, height: 170)
-                    .cornerRadius(15)
+                if entry.imagesURLString.count != 0 {
+                    NetworkImage(withURL: entry.imagesURLString[0], size: CGSize(width: 170, height: 170))
+                        .cornerRadius(15)
+                } else {
+                    NetworkImage(withURL: "https://room.r10s.jp/d/strg/ctrl/22/c0b9856a62d9ec65c6d3ed9d7a891100e76e8fe2.79.9.22.3.jpg", size: CGSize(width: 170, height: 170))
+                        .cornerRadius(15)
+                }
             }.widgetURL(URL(string: entry.deepLinks.first ?? ""))
 
-            
         case .systemMedium:
             VStack(alignment: .center, spacing: 0) {
                 Spacer()
 
                 HStack(alignment: .center, spacing: 15) {
-                    
                     Spacer()
-
-
                     Image("Logo")
                         .resizable()
-//                        .padding(.horizontal, 20.0)
                         .scaledToFill()
-                        .frame(width: 100, height: 34)
+                        .frame(width: 70, height: 24)
                     VStack(alignment: .leading, spacing: 0) {
-//                        Text(entry.date, style: .date)
-                            
                         Text("新着コーディネート")
                             .font(.subheadline)
                             .fontWeight(.bold)
                     }
-                    
-                    
                     Spacer()
 
                 }
-                .padding(.bottom, 8.0)
+                
+                Spacer()
+                
                 HStack(alignment: .center, spacing: 9) {
                     Spacer()
-                    Link(destination: URL(string: "https://room.rakuten.co.jp/room_553edc611c/coordinate/77258da7-a5bd-4562-aa0f-26c2c21471de")!) {
-                        Image("test")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 80, height: 90)
-                            .cornerRadius(10)
+                    
+                    VStack(alignment: .center, spacing: 0) {
+                        Spacer()
+                        if entry.imagesURLString.count != 0 {
+                            Link(destination: URL(string: entry.deepLinks[1])!) {
+                                NetworkImage(withURL: entry.imagesURLString[1], size: CGSize(width: 80, height: 100))
+                                    .cornerRadius(10)
+                                    .scaledToFill()
+                            }
+                        } else {
+                            Image("test")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 90)
+                                .cornerRadius(10)
+                        }
                     }
-                    .padding(.top, 10.0)
 
-                    Link(destination: URL(string: "https://room.rakuten.co.jp/room_553edc611c/coordinate/77258da7-a5bd-4562-aa0f-26c2c21471de")!) {
-                        Image("test")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 80, height: 90)
-                            .cornerRadius(10)
+                    VStack(alignment: .center, spacing: 0) {
+                        if entry.imagesURLString.count != 0 {
+                            Link(destination: URL(string: entry.deepLinks[2])!) {
+                                NetworkImage(withURL: entry.imagesURLString[2], size: CGSize(width: 80, height: 100))
+                                    .cornerRadius(10)
+                                    .scaledToFill()
+                            }
+                        } else {
+                            Image("test2")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 90)
+                                .cornerRadius(10)
+                        }
+                        Spacer()
+
                     }
-                    .padding(.bottom, 10.0)
                     
-                    Link(destination: URL(string: "https://room.rakuten.co.jp/room_553edc611c/coordinate/77258da7-a5bd-4562-aa0f-26c2c21471de")!) {
-                        Image("test")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 80, height: 90)
-                            .cornerRadius(10)
+                    VStack(alignment: .center, spacing: 0) {
+                        Spacer()
+                        if entry.imagesURLString.count != 0 {
+                            Link(destination: URL(string: entry.deepLinks[3])!) {
+                                NetworkImage(withURL: entry.imagesURLString[3], size: CGSize(width: 80, height: 100))
+                                    .cornerRadius(10)
+                                    .scaledToFill()
+                            }
+                        } else {
+                            Image("test3")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 90)
+                                .cornerRadius(10)
+                        }
                     }
-                    .padding(.top, 10.0)
                     
-                    Link(destination: URL(string: "https://room.rakuten.co.jp/room_553edc611c/coordinate/77258da7-a5bd-4562-aa0f-26c2c21471de")!) {
-                        Image("test")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 80, height: 90)
-                            .cornerRadius(10)
+                    VStack(alignment: .center, spacing: 0) {
+                        if entry.imagesURLString.count != 0 {
+                            Link(destination: URL(string: entry.deepLinks[4])!) {
+                                NetworkImage(withURL: entry.imagesURLString[4], size: CGSize(width: 80, height: 100))
+                                    .cornerRadius(10)
+                                    .scaledToFill()
+                            }
+                        } else {
+                            Image("test4")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 90)
+                                .cornerRadius(10)
+                        }
+                        Spacer()
+
                     }
-                    .padding(.bottom, 10.0)
+                    
                     Spacer()
                 }
                 Spacer()
 
             }
 
-//            VStack(alignment: .center, spacing: 10.0) {
-//                Text(entry.date, style: .time)
-//                if let imageUrl =  entry.imagesURLString.first {
-//                    NetworkImage(withURL: imageUrl, size: CGSize(width: 100, height: 100))
-//                }
-//                if let url = URL(string: "https://room.rakuten.co.jp/room_553edc611c/coordinate/77258da7-a5bd-4562-aa0f-26c2c21471de") {
-//                    Link("link 1", destination: url)
-//                }
-//            }
-//            VStack(alignment: .center, spacing: 5.0) {
-//
-//            }
 
         case .systemLarge:
             VStack(alignment: .center, spacing: 10.0) {
