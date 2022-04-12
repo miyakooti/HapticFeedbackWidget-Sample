@@ -84,6 +84,75 @@ struct coordinateEntryView: View {
 
             
         case .systemMedium:
+            VStack(alignment: .center, spacing: 0) {
+                Spacer()
+
+                HStack(alignment: .center, spacing: 15) {
+                    
+                    Spacer()
+
+
+                    Image("Logo")
+                        .resizable()
+//                        .padding(.horizontal, 20.0)
+                        .scaledToFill()
+                        .frame(width: 100, height: 34)
+                    VStack(alignment: .leading, spacing: 0) {
+//                        Text(entry.date, style: .date)
+                            
+                        Text("新着コーディネート")
+                            .font(.subheadline)
+                            .fontWeight(.bold)
+                    }
+                    
+                    
+                    Spacer()
+
+                }
+                .padding(.bottom, 8.0)
+                HStack(alignment: .center, spacing: 9) {
+                    Spacer()
+                    Link(destination: URL(string: "https://room.rakuten.co.jp/room_553edc611c/coordinate/77258da7-a5bd-4562-aa0f-26c2c21471de")!) {
+                        Image("test")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 80, height: 90)
+                            .cornerRadius(10)
+                    }
+                    .padding(.top, 10.0)
+
+                    Link(destination: URL(string: "https://room.rakuten.co.jp/room_553edc611c/coordinate/77258da7-a5bd-4562-aa0f-26c2c21471de")!) {
+                        Image("test")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 80, height: 90)
+                            .cornerRadius(10)
+                    }
+                    .padding(.bottom, 10.0)
+                    
+                    Link(destination: URL(string: "https://room.rakuten.co.jp/room_553edc611c/coordinate/77258da7-a5bd-4562-aa0f-26c2c21471de")!) {
+                        Image("test")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 80, height: 90)
+                            .cornerRadius(10)
+                    }
+                    .padding(.top, 10.0)
+                    
+                    Link(destination: URL(string: "https://room.rakuten.co.jp/room_553edc611c/coordinate/77258da7-a5bd-4562-aa0f-26c2c21471de")!) {
+                        Image("test")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 80, height: 90)
+                            .cornerRadius(10)
+                    }
+                    .padding(.bottom, 10.0)
+                    Spacer()
+                }
+                Spacer()
+
+            }
+
 //            VStack(alignment: .center, spacing: 10.0) {
 //                Text(entry.date, style: .time)
 //                if let imageUrl =  entry.imagesURLString.first {
@@ -93,11 +162,9 @@ struct coordinateEntryView: View {
 //                    Link("link 1", destination: url)
 //                }
 //            }
-            VStack(alignment: .center, spacing: 5.0) {
-                View() {
-                    
-                }
-            }
+//            VStack(alignment: .center, spacing: 5.0) {
+//
+//            }
 
         case .systemLarge:
             VStack(alignment: .center, spacing: 10.0) {
@@ -131,7 +198,7 @@ struct CoordinateWidget: Widget {
             coordinateEntryView(entry: entry)
         }
         .configurationDisplayName("コーディネート")
-        .description("コーディネートの最新投稿が表示されます")
+        .description("新着のコーディネートが表示されます")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }
@@ -148,12 +215,14 @@ struct ExampleWidgets: WidgetBundle {
 
 struct widgetSample_Previews: PreviewProvider {
     
+    var imageURL = "https://room.rakuten.co.jp/room_553edc611c/coordinate/77258da7-a5bd-4562-aa0f-26c2c21471de"
+    
     static var previews: some View {
 //        coordinateEntryView(entry: SimpleEntry(date: Date(), imagesURLString: [String](), deepLinks: [String]()))
 //            .preferredColorScheme(.light)
 //            .previewContext(WidgetPreviewContext(family: .systemSmall))
         Group {
-            coordinateEntryView(entry: SimpleEntry(date: Date(), imagesURLString: [String](), deepLinks: [String]()))
+            coordinateEntryView(entry: SimpleEntry(date: Date(), imagesURLString: [], deepLinks: [String]()))
                 .padding()
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
 
@@ -161,7 +230,7 @@ struct widgetSample_Previews: PreviewProvider {
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
 
             coordinateEntryView(entry: SimpleEntry(date: Date(), imagesURLString: [String](), deepLinks: [String]()))
-                .previewContext(WidgetPreviewContext(family: .systemExtraLarge))
+                .previewContext(WidgetPreviewContext(family: .systemLarge))
         }
     }
 }
