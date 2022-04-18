@@ -49,4 +49,24 @@ final class Loader {
             }
     }
     
+    static func fetchCoordinateDetail(uuid: String, completion: @escaping (CoordinateDetailResponse?) -> Void) {
+        AF.request("https://room.rakuten.co.jp/api/coordinate/\(uuid)?api_version=2")
+            .responseJSON { response in
+                if response.error != nil {
+                    print(response.error?.localizedDescription)
+                    completion(nil)
+                }
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                do {
+                    guard let data = response.data else { return }
+                    let coord: CoordinateDetailResponse = try decoder.decode(CoordinateDetailResponse.self, from: data)
+                    completion(coord)
+                } catch {
+                    print(error.localizedDescription)
+                    completion(nil)
+                }
+            }
+    }
+    
 }
