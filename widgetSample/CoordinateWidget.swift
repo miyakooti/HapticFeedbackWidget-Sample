@@ -43,7 +43,7 @@ struct Provider: TimelineProvider {
                     fullname.append(value.user.fullname)
                     cntLike.append(value.cntLike)
                 }
-
+                
                 for hourOffset in 0 ..< 5 {
                     let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
                     let entry = SimpleEntry(date: entryDate, imagesURLString: urlsString, deepLinks: deepLinks, content: content, avatarImage: avatarImage, cntLike: cntLike, fullName: fullname)
@@ -53,11 +53,13 @@ struct Provider: TimelineProvider {
             } else {
                 for hourOffset in 0 ..< 5 {
                     let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-                    let entry = SimpleEntry(date: Date(), imagesURLString: [], deepLinks: [String](), content: [String](), avatarImage: [String](), cntLike: [Int](), fullName: [String]())
+                    let entry = SimpleEntry(date: entryDate, imagesURLString: [], deepLinks: [String](), content: [String](), avatarImage: [String](), cntLike: [Int](), fullName: [String]())
                     entries.append(entry)
                 }
             }
-            let timeline = Timeline(entries: entries, policy: .atEnd)
+            // update timeline per 60 minutes
+            let refresh = Calendar.current.date(byAdding: .minute, value: 60, to: Date()) ?? Date()
+            let timeline = Timeline(entries: entries, policy: .after(refresh))
             completion(timeline)
         }
                 
@@ -94,6 +96,7 @@ struct coordinateEntryView: View {
             }.widgetURL(URL(string: entry.deepLinks.first ?? ""))
 
         case .systemMedium:
+
             VStack(alignment: .center, spacing: 0) {
                 Spacer()
 
@@ -111,12 +114,13 @@ struct coordinateEntryView: View {
                     Spacer()
 
                 }
-                
+
                 Spacer()
-                
-                HStack(alignment: .center, spacing: 9) {
+
+                HStack(alignment: .center, spacing: 5) {
                     Spacer()
                     
+
                     VStack(alignment: .center, spacing: 0) {
                         Spacer()
                         if entry.imagesURLString.count != 0 {
@@ -133,6 +137,7 @@ struct coordinateEntryView: View {
                                 .cornerRadius(10)
                         }
                     }
+                    
 
                     VStack(alignment: .center, spacing: 0) {
                         if entry.imagesURLString.count != 0 {
@@ -152,6 +157,7 @@ struct coordinateEntryView: View {
 
                     }
                     
+                    
                     VStack(alignment: .center, spacing: 0) {
                         Spacer()
                         if entry.imagesURLString.count != 0 {
@@ -169,6 +175,7 @@ struct coordinateEntryView: View {
                         }
                     }
                     
+
                     VStack(alignment: .center, spacing: 0) {
                         if entry.imagesURLString.count != 0 {
                             Link(destination: URL(string: entry.deepLinks[4])!) {
@@ -186,7 +193,7 @@ struct coordinateEntryView: View {
                         Spacer()
 
                     }
-                    
+
                     Spacer()
                 }
                 Spacer()
@@ -195,13 +202,170 @@ struct coordinateEntryView: View {
 
 
         case .systemLarge:
-            VStack(alignment: .center, spacing: 10.0) {
-                Text(entry.date, style: .time)
-                if let imageUrl =  entry.imagesURLString.first {
-                    NetworkImage(withURL: imageUrl, size: CGSize(width: 100, height: 100))
+            Spacer()
+            VStack(alignment: .center, spacing: 5) {
+                Spacer()
+                Link(destination: URL(string: entry.deepLinks.count != 0 ? entry.deepLinks[10] : "https://room.rakuten.co.jp")!) {
+                    HStack(alignment: .center, spacing: 5) {
+
+                        Spacer()
+
+                        if entry.imagesURLString.count != 0 {
+                            NetworkImage(withURL: entry.imagesURLString[10], size: CGSize(width: 113, height: 150))
+                                .scaledToFill()
+                                .cornerRadius(10)
+                        } else {
+                            Image("test")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 113, height: 150)
+                                .cornerRadius(10)
+                        }
+                        
+                        Spacer()
+                        
+                        VStack(alignment: .leading, spacing: 5) {
+                            Spacer()
+
+                            HStack(alignment: .center, spacing: 3) {
+                                if entry.imagesURLString.count != 0 {
+                                    NetworkImage(withURL: entry.avatarImage[10], size: CGSize(width: 30, height: 30))
+                                        .cornerRadius(15)
+                                    Text(verbatim: entry.fullName[10])
+                                        .font(.caption)
+                                        .fontWeight(.light)
+                                } else {
+                                    Image("test2")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                        .cornerRadius(15)
+                                    Text("ユーザーネームが入ります")
+                                        .font(.caption)
+                                        .fontWeight(.light)
+                                }
+                                
+                                
+                            }
+
+                            HStack(alignment: .center, spacing: 3) {
+                                Image("heart")
+                                    .resizable()
+                                    .frame(width: 11, height: 11)
+                                if entry.cntLike.count != 0 {
+                                    Text(verbatim: String(entry.cntLike[10]))
+                                        .font(.subheadline)
+                                        .fontWeight(.light)
+                                } else {
+                                    Text("0")
+                                        .font(.subheadline)
+                                        .fontWeight(.light)
+                                    
+                                }
+
+
+                            }
+
+                            if entry.content.count != 0 {
+                                Text(verbatim: entry.content[10])
+                                    .font(.caption)
+                                    .fontWeight(.regular)
+                            } else {
+                                Text("コーディネートの説明が入力されます")
+                                    .font(.caption)
+                                    .fontWeight(.regular)
+                            }
+                            
+                            Spacer()
+
+                        }
+                        Spacer()
+                    }
+
                 }
-                Text("コーディネート")
-            }.widgetURL(URL(string: "https://room.rakuten.co.jp/room_553edc611c/coordinate/77258da7-a5bd-4562-aa0f-26c2c21471de"))
+
+                Divider()
+                
+                Link(destination: URL(string: entry.deepLinks.count != 0 ? entry.deepLinks[11] : "https://room.rakuten.co.jp")!) {
+                    HStack(alignment: .center, spacing: 5) {
+                        
+                        Spacer()
+                        
+                        VStack(alignment: .leading, spacing: 5) {
+                            Spacer()
+
+                            HStack(alignment: .center, spacing: 3) {
+                                if entry.imagesURLString.count != 0 {
+                                    NetworkImage(withURL: entry.avatarImage[11], size: CGSize(width: 30, height: 30))
+                                        .cornerRadius(15)
+                                    Text(verbatim: entry.fullName[11])
+                                        .font(.caption)
+                                        .fontWeight(.light)
+                                } else {
+                                    Image("test2")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                        .cornerRadius(15)
+                                    Text("ユーザーネームが入ります")
+                                        .font(.caption)
+                                        .fontWeight(.light)
+                                }
+                                
+                                
+                            }
+
+                            HStack(alignment: .center, spacing: 3) {
+                                Image("heart")
+                                    .resizable()
+                                    .frame(width: 11, height: 11)
+                                if entry.cntLike.count != 0 {
+                                    Text(verbatim: String(entry.cntLike[11]))
+                                        .font(.subheadline)
+                                        .fontWeight(.light)
+                                } else {
+                                    Text("0")
+                                        .font(.subheadline)
+                                        .fontWeight(.light)
+                                    
+                                }
+
+
+                            }
+
+                            if entry.content.count != 0 {
+                                Text(verbatim: entry.content[11])
+                                    .font(.caption)
+                                    .fontWeight(.regular)
+                            } else {
+                                Text("コーディネートの説明が入力されます")
+                                    .font(.caption)
+                                    .fontWeight(.regular)
+                            }
+                            
+                            Spacer()
+
+                        }
+                        
+                        Spacer()
+
+                        if entry.imagesURLString.count != 0 {
+                            NetworkImage(withURL: entry.imagesURLString[11], size: CGSize(width: 113, height: 150))
+                                .scaledToFill()
+                                .cornerRadius(10)
+                        } else {
+                            Image("test")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 113, height: 150)
+                                .cornerRadius(10)
+                        }
+                        
+                        Spacer()
+                    }
+                }
+
+                Spacer()
+            }
+            Spacer()
 
         case .systemExtraLarge:
             VStack(alignment: .center, spacing: 10.0) {
@@ -218,6 +382,384 @@ struct coordinateEntryView: View {
     
 }
 
+struct coordinateDetailEntryView: View {
+    var entry: Provider.Entry
+    @Environment(\.widgetFamily) var family: WidgetFamily
+
+    var body: some View {
+        
+            
+
+
+
+        Spacer()
+        VStack(alignment: .center, spacing: 5) {
+            Spacer()
+            Link(destination: URL(string: entry.deepLinks.count != 0 ? entry.deepLinks[10] : "https://room.rakuten.co.jp")!) {
+                HStack(alignment: .center, spacing: 5) {
+                    
+                    Spacer()
+                    
+                    if entry.imagesURLString.count != 0 {
+                        NetworkImage(withURL: entry.imagesURLString[10], size: CGSize(width: 113, height: 150))
+                            .scaledToFill()
+                            .cornerRadius(10)
+                    } else {
+                        Image("test")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 113, height: 150)
+                            .cornerRadius(10)
+                    }
+                    
+                    Spacer()
+                    
+                    VStack(alignment: .leading, spacing: 5) {
+                        Spacer()
+                        
+                        HStack(alignment: .center, spacing: 3) {
+                            if entry.imagesURLString.count != 0 {
+                                NetworkImage(withURL: entry.avatarImage[10], size: CGSize(width: 30, height: 30))
+                                    .cornerRadius(15)
+                                Text(verbatim: entry.fullName[10])
+                                    .font(.caption)
+                                    .fontWeight(.light)
+                            } else {
+                                Image("test2")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                                    .cornerRadius(15)
+                                Text("ユーザーネームが入ります")
+                                    .font(.caption)
+                                    .fontWeight(.light)
+                            }
+                            
+                            
+                        }
+                        
+                        HStack(alignment: .center, spacing: 3) {
+                            Image("heart")
+                                .resizable()
+                                .frame(width: 11, height: 11)
+                            if entry.cntLike.count != 0 {
+                                Text(verbatim: String(entry.cntLike[10]))
+                                    .font(.subheadline)
+                                    .fontWeight(.light)
+                            } else {
+                                Text("0")
+                                    .font(.subheadline)
+                                    .fontWeight(.light)
+                                
+                            }
+                            
+                            
+                        }
+                        
+                        if entry.content.count != 0 {
+                            Text(verbatim: entry.content[10])
+                                .font(.caption)
+                                .fontWeight(.regular)
+                        } else {
+                            Text("コーディネートの説明が入力されます")
+                                .font(.caption)
+                                .fontWeight(.regular)
+                        }
+                        
+                        Spacer()
+                        
+                    }
+                    Spacer()
+                }
+                
+            }
+            
+            Divider()
+            
+            Link(destination: URL(string: entry.deepLinks.count != 0 ? entry.deepLinks[11] : "https://room.rakuten.co.jp")!) {
+                HStack(alignment: .center, spacing: 5) {
+                    
+                    Spacer()
+                    
+                    VStack(alignment: .leading, spacing: 5) {
+                        Spacer()
+                        
+                        HStack(alignment: .center, spacing: 3) {
+                            if entry.imagesURLString.count != 0 {
+                                NetworkImage(withURL: entry.avatarImage[11], size: CGSize(width: 30, height: 30))
+                                    .cornerRadius(15)
+                                Text(verbatim: entry.fullName[11])
+                                    .font(.caption)
+                                    .fontWeight(.light)
+                            } else {
+                                Image("test2")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                                    .cornerRadius(15)
+                                Text("ユーザーネームが入ります")
+                                    .font(.caption)
+                                    .fontWeight(.light)
+                            }
+                            
+                            
+                        }
+                        
+                        HStack(alignment: .center, spacing: 3) {
+                            Image("heart")
+                                .resizable()
+                                .frame(width: 11, height: 11)
+                            if entry.cntLike.count != 0 {
+                                Text(verbatim: String(entry.cntLike[11]))
+                                    .font(.subheadline)
+                                    .fontWeight(.light)
+                            } else {
+                                Text("0")
+                                    .font(.subheadline)
+                                    .fontWeight(.light)
+                                
+                            }
+                            
+                            
+                        }
+                        
+                        if entry.content.count != 0 {
+                            Text(verbatim: entry.content[11])
+                                .font(.caption)
+                                .fontWeight(.regular)
+                        } else {
+                            Text("コーディネートの説明が入力されます")
+                                .font(.caption)
+                                .fontWeight(.regular)
+                        }
+                        
+                        Spacer()
+                        
+                    }
+                    
+                    Spacer()
+                    
+                    if entry.imagesURLString.count != 0 {
+                        NetworkImage(withURL: entry.imagesURLString[11], size: CGSize(width: 113, height: 150))
+                            .scaledToFill()
+                            .cornerRadius(10)
+                    } else {
+                        Image("test")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 113, height: 150)
+                            .cornerRadius(10)
+                    }
+                    
+                    Spacer()
+                }
+            }
+            
+            Spacer()
+        }
+        Spacer()
+
+
+
+    }
+    
+}
+
+struct coordinatesListEntryView: View {
+    var entry: Provider.Entry
+    @Environment(\.widgetFamily) var family: WidgetFamily
+
+    var body: some View {
+        
+            
+        VStack(alignment: .center, spacing: 3) {
+            HStack(alignment: .center, spacing: 3) {
+                if entry.imagesURLString.count != 0 {
+                    NetworkImage(withURL: entry.imagesURLString[19], size: CGSize(width: 60, height: 60))
+                        .scaledToFill()
+                        .cornerRadius(10)
+                } else {
+                    Image("test")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 60, height: 60)
+                        .cornerRadius(10)
+                }
+                Text
+            }
+        }
+
+
+        Spacer()
+        VStack(alignment: .center, spacing: 5) {
+            Spacer()
+            Link(destination: URL(string: entry.deepLinks.count != 0 ? entry.deepLinks[10] : "https://room.rakuten.co.jp")!) {
+                HStack(alignment: .center, spacing: 5) {
+                    
+                    Spacer()
+                    
+                    if entry.imagesURLString.count != 0 {
+                        NetworkImage(withURL: entry.imagesURLString[10], size: CGSize(width: 113, height: 150))
+                            .scaledToFill()
+                            .cornerRadius(10)
+                    } else {
+                        Image("test")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 113, height: 150)
+                            .cornerRadius(10)
+                    }
+                    
+                    Spacer()
+                    
+                    VStack(alignment: .leading, spacing: 5) {
+                        Spacer()
+                        
+                        HStack(alignment: .center, spacing: 3) {
+                            if entry.imagesURLString.count != 0 {
+                                NetworkImage(withURL: entry.avatarImage[10], size: CGSize(width: 30, height: 30))
+                                    .cornerRadius(15)
+                                Text(verbatim: entry.fullName[10])
+                                    .font(.caption)
+                                    .fontWeight(.light)
+                            } else {
+                                Image("test2")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                                    .cornerRadius(15)
+                                Text("ユーザーネームが入ります")
+                                    .font(.caption)
+                                    .fontWeight(.light)
+                            }
+                            
+                            
+                        }
+                        
+                        HStack(alignment: .center, spacing: 3) {
+                            Image("heart")
+                                .resizable()
+                                .frame(width: 11, height: 11)
+                            if entry.cntLike.count != 0 {
+                                Text(verbatim: String(entry.cntLike[10]))
+                                    .font(.subheadline)
+                                    .fontWeight(.light)
+                            } else {
+                                Text("0")
+                                    .font(.subheadline)
+                                    .fontWeight(.light)
+                                
+                            }
+                            
+                            
+                        }
+                        
+                        if entry.content.count != 0 {
+                            Text(verbatim: entry.content[10])
+                                .font(.caption)
+                                .fontWeight(.regular)
+                        } else {
+                            Text("コーディネートの説明が入力されます")
+                                .font(.caption)
+                                .fontWeight(.regular)
+                        }
+                        
+                        Spacer()
+                        
+                    }
+                    Spacer()
+                }
+                
+            }
+            
+            Divider()
+            
+            Link(destination: URL(string: entry.deepLinks.count != 0 ? entry.deepLinks[11] : "https://room.rakuten.co.jp")!) {
+                HStack(alignment: .center, spacing: 5) {
+                    
+                    Spacer()
+                    
+                    VStack(alignment: .leading, spacing: 5) {
+                        Spacer()
+                        
+                        HStack(alignment: .center, spacing: 3) {
+                            if entry.imagesURLString.count != 0 {
+                                NetworkImage(withURL: entry.avatarImage[11], size: CGSize(width: 30, height: 30))
+                                    .cornerRadius(15)
+                                Text(verbatim: entry.fullName[11])
+                                    .font(.caption)
+                                    .fontWeight(.light)
+                            } else {
+                                Image("test2")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                                    .cornerRadius(15)
+                                Text("ユーザーネームが入ります")
+                                    .font(.caption)
+                                    .fontWeight(.light)
+                            }
+                            
+                            
+                        }
+                        
+                        HStack(alignment: .center, spacing: 3) {
+                            Image("heart")
+                                .resizable()
+                                .frame(width: 11, height: 11)
+                            if entry.cntLike.count != 0 {
+                                Text(verbatim: String(entry.cntLike[11]))
+                                    .font(.subheadline)
+                                    .fontWeight(.light)
+                            } else {
+                                Text("0")
+                                    .font(.subheadline)
+                                    .fontWeight(.light)
+                                
+                            }
+                            
+                            
+                        }
+                        
+                        if entry.content.count != 0 {
+                            Text(verbatim: entry.content[11])
+                                .font(.caption)
+                                .fontWeight(.regular)
+                        } else {
+                            Text("コーディネートの説明が入力されます")
+                                .font(.caption)
+                                .fontWeight(.regular)
+                        }
+                        
+                        Spacer()
+                        
+                    }
+                    
+                    Spacer()
+                    
+                    if entry.imagesURLString.count != 0 {
+                        NetworkImage(withURL: entry.imagesURLString[11], size: CGSize(width: 113, height: 150))
+                            .scaledToFill()
+                            .cornerRadius(10)
+                    } else {
+                        Image("test")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 113, height: 150)
+                            .cornerRadius(10)
+                    }
+                    
+                    Spacer()
+                }
+            }
+            
+            Spacer()
+        }
+        Spacer()
+
+
+
+    }
+    
+}
+
+
 struct CoordinateWidget: Widget {
     
     let kind: String = "coordinateWidget"
@@ -231,13 +773,40 @@ struct CoordinateWidget: Widget {
     }
 }
 
+struct CoordinateDetailWidget: Widget {
+    
+    let kind: String = "coordinateDetailWidget"
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+            coordinateDetailEntryView(entry: entry)
+        }
+        .configurationDisplayName("コーディネート")
+        .description("コーディネートの詳細が表示されます")
+        .supportedFamilies([.systemLarge])
+    }
+}
+
+struct CoordinatesListWidget: Widget {
+    
+    let kind: String = "coordinatesListWidget"
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+            coordinatesListEntryView(entry: entry)
+        }
+        .configurationDisplayName("コーディネート")
+        .description("コーディネートの詳細が表示されます")
+        .supportedFamilies([.systemLarge])
+    }
+}
+
 
 @main
 struct ExampleWidgets: WidgetBundle {
     @WidgetBundleBuilder
     var body: some Widget {
         CoordinateWidget()
-//        CollectWidget()
+        CoordinateDetailWidget()
+        CoordinatesListWidget()
     }
 }
 
