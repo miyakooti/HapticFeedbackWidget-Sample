@@ -1,8 +1,8 @@
 //
 //  NetworkImage.swift
-//  widgetSampleExtension
+//  ROOM
 //
-//  Created by Arai, Kosuke | ECMPD on 2022/04/05.
+//  Created by Arai, Kosuke | ECMPD on 2022/04/06.
 //
 
 import Foundation
