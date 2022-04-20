@@ -10,6 +10,8 @@ import SwiftUI
 
 struct Provider: TimelineProvider {
     
+    typealias Entry = SimpleEntry
+    
     func placeholder(in context: Context) -> SimpleEntry {
         return SimpleEntry(date: Date(), imagesURLString: [], deepLinks: [String](), content: [String](), avatarImage: [String](), cntLike: [Int](), fullName: [String](), coordinateDetail: CoordinateDetailResponse())
     }

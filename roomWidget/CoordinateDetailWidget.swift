@@ -18,15 +18,16 @@ struct coordinateDetailEntryView: View {
         let index = 18
         
         Spacer()
-        VStack(alignment: .center, spacing: 5) {
-            Spacer()
-            Link(destination: URL(string: entry.deepLinks.count != 0 ? entry.deepLinks[index] : "https://room.rakuten.co.jp")!) {
+        Link(destination: URL(string: entry.deepLinks.count != 0 ? entry.deepLinks[index] : "https://room.rakuten.co.jp")!) {
+            
+            VStack(alignment: .center, spacing: 5) {
+                Spacer()
                 HStack(alignment: .center, spacing: 5) {
-
+                    
                     Spacer()
-
+                    
                     if entry.imagesURLString.count != 0 {
-                        NetworkImage(withURL: entry.imagesURLString[index], size: CGSize(width: 118, height: 160))
+                        NetworkImage(withURL: entry.imagesURLString[index], size: CGSize(width: 107, height: 135))
                             .scaledToFill()
                             .cornerRadius(10)
                     } else {
@@ -41,7 +42,7 @@ struct coordinateDetailEntryView: View {
                     
                     VStack(alignment: .leading, spacing: 5) {
                         Spacer()
-
+                        
                         HStack(alignment: .center, spacing: 3) {
                             if entry.imagesURLString.count != 0 {
                                 
@@ -62,7 +63,7 @@ struct coordinateDetailEntryView: View {
                             
                             
                         }
-
+                        
                         HStack(alignment: .center, spacing: 3) {
                             Image("heart")
                                 .resizable()
@@ -77,14 +78,17 @@ struct coordinateDetailEntryView: View {
                                     .fontWeight(.light)
                                 
                             }
-
-
+                            
+                            
                         }
-
+                        
                         if entry.content.count != 0 {
                             Text(verbatim: entry.content[index])
                                 .font(.caption)
                                 .fontWeight(.regular)
+                                .frame(height: 70.0)
+                                .fixedSize(horizontal: false, vertical: true)
+                            
                         } else {
                             Text("コーディネートの説明が入力されます")
                                 .font(.caption)
@@ -92,65 +96,168 @@ struct coordinateDetailEntryView: View {
                         }
                         
                         Spacer()
-
+                        
                     }
                     Spacer()
-                }
-
-            }
-
-            Divider()
-            
-            VStack(alignment: .center, spacing: 3) {
-                Spacer()
-                HStack(alignment: .center, spacing: 3) {
-                    Text("着用商品")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.leading)
-                        .padding(.leading, 30.0)
-                    Spacer()
-
                 }
                 
-                Spacer()
-                HStack(alignment: .center, spacing: 3) {
-                    Spacer()
-
-                    if entry.coordinateDetail.data?.coordinateItem?.count ?? 0 >= 1 {
-                        NetworkImage(withURL: entry.coordinateDetail.data?.coordinateItem![0].image?[0].url ?? "", size: itemSize)
-                            .cornerRadius(10)
+                
+                Divider()
+                
+                VStack(alignment: .center, spacing: 3) {
+                    HStack(alignment: .center, spacing: 3) {
+                        Text("着用商品")
+                            .font(.title3)
+                            .fontWeight(.bold)
+                            .multilineTextAlignment(.leading)
+                            .padding(.leading, 30.0)
                         Spacer()
-                    } else {
-                        Image("test3")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: scale, height: scale)
-                            .cornerRadius(10)
-                    }
-
-                    Spacer()
-
-                    if entry.coordinateDetail.data?.coordinateItem?.count ?? 0 >= 2 {
-                        NetworkImage(withURL: entry.coordinateDetail.data?.coordinateItem![1].image?[0].url ?? "", size: itemSize)
-                            .cornerRadius(10)
-                        Spacer()
-                    }
-
-
-                    if entry.coordinateDetail.data?.coordinateItem?.count ?? 0 >= 3 {
-                        NetworkImage(withURL: entry.coordinateDetail.data?.coordinateItem![2].image?[0].url ?? "", size: itemSize)
-                            .cornerRadius(10)
-                        Spacer()
-
+                        
                     }
                     
+                    Spacer()
+                    HStack(alignment: .center, spacing: 3) {
+                        Spacer()
+                        
+                        if entry.coordinateDetail.data?.coordinateItem?.count ?? 0 >= 1 {
+                            if entry.coordinateDetail.data?.coordinateItem![0].image != nil {
+                                                                
+                                VStack(alignment: .center, spacing: 3) {
+                                    Text(entry.coordinateDetail.data?.coordinateItem![0].item?.name ?? "")
+                                        .font(.caption2)
+                                        .fontWeight(.regular)
+                                        .frame(width: 90.0)
+                                    NetworkImage(withURL: entry.coordinateDetail.data?.coordinateItem![0].image?[0].url ?? "", size: itemSize)
+                                        .cornerRadius(10)
+                                    Text("¥\(String(entry.coordinateDetail.data?.coordinateItem![0].price ?? 0))")
+                                        .font(.caption)
+                                        .fontWeight(.regular)
+                                        .multilineTextAlignment(.leading)
+                                        .frame(width: 90.0)
+                                }
+                                
+                                Spacer()
+                            } else if entry.coordinateDetail.data?.coordinateItem![0].imageCrop != nil {
+                                VStack(alignment: .center, spacing: 3) {
+
+                                Text(entry.coordinateDetail.data?.coordinateItem![0].item?.name ?? "")
+                                    .font(.caption2)
+                                    .fontWeight(.regular)
+                                    .frame(width: 90.0)
+                                NetworkImage(withURL: entry.coordinateDetail.data?.coordinateItem![0].imageCrop?.url ?? "", size: itemSize)
+                                    .cornerRadius(10)
+                                Text("¥\(String(entry.coordinateDetail.data?.coordinateItem![0].price ?? 0))")
+                                    .font(.caption)
+                                    .fontWeight(.regular)
+                                    .multilineTextAlignment(.leading)
+                                    .frame(width: 90.0)
+                                }
+                                
+                                Spacer()
+                            } else {
+                                // preview data
+                                Image("test3")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: scale, height: scale)
+                                    .cornerRadius(10)
+                                Spacer()
+                            }
+                        } else {
+                            // preview data
+                            Image("test3")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: scale, height: scale)
+                                .cornerRadius(10)
+                            Spacer()
+                        }
+                        
+                        if entry.coordinateDetail.data?.coordinateItem?.count ?? 0 >= 2 {
+                            if entry.coordinateDetail.data?.coordinateItem![1].image != nil {
+                                VStack(alignment: .center, spacing: 3) {
+
+                                Text(entry.coordinateDetail.data?.coordinateItem![1].item?.name ?? "")
+                                    .font(.caption2)
+                                    .fontWeight(.regular)
+                                    .frame(width: 90.0)
+                                NetworkImage(withURL: entry.coordinateDetail.data?.coordinateItem![1].image?[0].url ?? "", size: itemSize)
+                                    .cornerRadius(10)
+                                Text("¥\(String(entry.coordinateDetail.data?.coordinateItem![1].price ?? 0))")
+                                    .font(.caption)
+                                    .fontWeight(.regular)
+                                    .multilineTextAlignment(.leading)
+                                    .frame(width: 90.0)
+                                }
+                                
+                                Spacer()
+                            } else if entry.coordinateDetail.data?.coordinateItem![1].imageCrop != nil {
+                                VStack(alignment: .center, spacing: 3) {
+
+                                Text(entry.coordinateDetail.data?.coordinateItem![1].item?.name ?? "")
+                                    .font(.caption2)
+                                    .fontWeight(.regular)
+                                    .frame(width: 90.0)
+                                NetworkImage(withURL: entry.coordinateDetail.data?.coordinateItem![1].imageCrop?.url ?? "", size: itemSize)
+                                    .cornerRadius(10)
+                                Text("¥\(String(entry.coordinateDetail.data?.coordinateItem![1].price ?? 0))")
+                                    .font(.caption)
+                                    .fontWeight(.regular)
+                                    .multilineTextAlignment(.leading)
+                                    .frame(width: 90.0)
+                                }
+                                
+                                Spacer()
+                            }
+                            
+                        }
+                        
+                        if entry.coordinateDetail.data?.coordinateItem?.count ?? 0 >= 3 {
+                            if entry.coordinateDetail.data?.coordinateItem![2].image != nil {
+                                VStack(alignment: .center, spacing: 3) {
+
+                                Text(entry.coordinateDetail.data?.coordinateItem![2].item?.name ?? "商品名")
+                                    .font(.caption2)
+                                    .fontWeight(.regular)
+                                    .frame(width: 90.0)
+                                NetworkImage(withURL: entry.coordinateDetail.data?.coordinateItem![2].image?[0].url ?? "", size: itemSize)
+                                    .cornerRadius(10)
+                                Text("¥\(String(entry.coordinateDetail.data?.coordinateItem![2].price ?? 0))")
+                                    .font(.caption)
+                                    .fontWeight(.regular)
+                                    .multilineTextAlignment(.leading)
+                                    .frame(width: 90.0)
+                                }
+                                
+                                Spacer()
+                            } else if entry.coordinateDetail.data?.coordinateItem![2].imageCrop != nil {
+                                VStack(alignment: .center, spacing: 3) {
+
+                                Text(entry.coordinateDetail.data?.coordinateItem![2].item?.name ?? "商品名")
+                                    .font(.caption2)
+                                    .fontWeight(.regular)
+                                    .frame(width: 90.0)
+                                NetworkImage(withURL: entry.coordinateDetail.data?.coordinateItem![2].imageCrop?.url ?? "", size: itemSize)
+                                    .cornerRadius(10)
+                                Text("¥\(String(entry.coordinateDetail.data?.coordinateItem![2].price ?? 0))")
+                                    .font(.caption)
+                                    .fontWeight(.regular)
+                                    .multilineTextAlignment(.leading)
+                                    .frame(width: 90.0)
+                                }
+                                
+                                Spacer()
+                            }
+
+                        }
+                        
+                    }
+                    Spacer()
                 }
+                
+                
                 Spacer()
             }
-            
-
-            Spacer()
         }
         Spacer()
     }

@@ -195,8 +195,10 @@ struct coordinateEntryView: View {
 
                             if entry.content.count != 0 {
                                 Text(verbatim: entry.content[10])
-                                    .font(.caption)
+                                    .font(.caption2)
                                     .fontWeight(.regular)
+                                    .frame(height: 75.0)
+                                    .fixedSize(horizontal: false, vertical: true)
                             } else {
                                 Text("コーディネートの説明が入力されます")
                                     .font(.caption)
